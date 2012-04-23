@@ -4,7 +4,7 @@ Plugin Name: Rach5 Helper
 Plugin URI: http://www.vanpattenmedia.com/
 Description: Helper functions for Rach5 themes
 Author: Van Patten Media
-Version: 0.1
+Version: 0.2
 Author URI: http://www.vanpattenmedia.com/
 */
 
@@ -28,7 +28,7 @@ function wp_base_dir() {
 
 function rach5_info() {
 	if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
-	
+
 	// Get some info about the site
 	define('WP_BASE', wp_base_dir());
 	define('THEME_NAME', next(explode('/themes/', get_template_directory())));
@@ -39,12 +39,13 @@ function rach5_info() {
 }
 rach5_info();
 
+
 /**
  *
  * Require everything else
  *
  */
- 
+
 require_once( RACH5_HELPER_PATH . 'functions/functions.php');
 require_once( RACH5_HELPER_PATH . 'functions/admin.php');
 require_once( RACH5_HELPER_PATH . 'functions/clean.php');
@@ -57,5 +58,5 @@ require_once( RACH5_HELPER_PATH . 'functions/html5.php');
  * Plugin Updater
  *
  */
- 
+
 require_once( RACH5_HELPER_PATH . 'updater.php');

@@ -5,7 +5,7 @@
 //    Rach5
 //    http://www.vanpattenmedia.com/projects/rach5/
 //
-//    Functions: HTML5 support    
+//    Functions: HTML5 support
 //
 // ------------------------------------------------------------ //
 
@@ -30,7 +30,7 @@ function rach5_img_caption_shortcode($val, $attr, $content = null) {
 		'width'		=> '',
 		'caption' 	=> ''
 	), $attr));
-	
+
 	if ( 1 > (int) $width || empty($caption) )
 		return $val;
 
@@ -41,7 +41,12 @@ function rach5_img_caption_shortcode($val, $attr, $content = null) {
 		$id = 'id="' . $id . '" ';
 	}
 
-	return '<figure ' . $id . 'class="wp-caption ' . esc_attr($align) . '">' . do_shortcode( $content ) . '<figcaption ' . $capid 
+	if ( $width ) {
+		$width = esc_attr($width);
+		$width = 'style="width: ' . $width . 'px" ';
+	}
+
+	return '<figure ' . $id . $width . 'class="wp-caption ' . esc_attr($align) . '">' . do_shortcode( $content ) . '<figcaption ' . $capid
 	. 'class="wp-caption-text">' . $caption . '</figcaption></figure>';
 }
 add_filter('img_caption_shortcode', 'rach5_img_caption_shortcode',10,3);
