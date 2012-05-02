@@ -4,11 +4,19 @@ Plugin Name: Rach5 Helper
 Plugin URI: http://www.vanpattenmedia.com/
 Description: Helper functions for Rach5 themes
 Author: Van Patten Media
-Version: 0.2
+Version: 0.3
 Author URI: http://www.vanpattenmedia.com/
 */
 
 /**
+ * Rach5 Helper
+ *
+ * @version 0.3
+ * @package rach5-helper
+ */
+
+
+/*
  *
  * Set up constants and base functions
  *
@@ -16,7 +24,12 @@ Author URI: http://www.vanpattenmedia.com/
 
 define( 'RACH5_HELPER_PATH', plugin_dir_path( __FILE__ ) );
 
-// returns WordPress subdirectory if applicable
+
+/**
+ * function wp_base_dir
+ * returns WordPress subdirectory if applicable
+ * @since 0.1
+ */
 function wp_base_dir() {
 	preg_match('!(https?://[^/|"]+)([^"]+)?!', site_url(), $matches);
 	if (count($matches) === 3) {
@@ -26,6 +39,10 @@ function wp_base_dir() {
 	}
 }
 
+/**
+ * function rach5_info
+ * @since 0.1
+ */
 function rach5_info() {
 	if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
 
@@ -40,23 +57,91 @@ function rach5_info() {
 rach5_info();
 
 
-/**
+/*
  *
  * Require everything else
  *
  */
 
 require_once( RACH5_HELPER_PATH . 'functions/functions.php');
-require_once( RACH5_HELPER_PATH . 'functions/admin.php');
 require_once( RACH5_HELPER_PATH . 'functions/clean.php');
-require_once( RACH5_HELPER_PATH . 'functions/htaccess.php');
 require_once( RACH5_HELPER_PATH . 'functions/html5.php');
+require_once( RACH5_HELPER_PATH . 'functions/admin.php');
+
+/**
+ * Enable default rach5 features
+ */
+$rach5_theme_features = array(
+	"htaccess" => true,
+	"root-relative-urls" => true,
+);
 
 
 /**
+ * function add_rach5_support
+ * Explicitly enable features
+ * @since 0.3
+ */
+
+function add_rach5_support( $feature ) {
+	global $rach5_theme_features;
+
+	if ( func_num_args() == 1 ) {
+		$rach5_theme_features[$feature] = true;
+	} else {
+		$rach5_theme_features[$feature] = array_slice( func_get_args(), 1 );
+	}
+}
+
+
+/**
+ * function remove_rach5_support
+ * Explicitly disable rach5 features
+ * @since 0.3
+ */
+
+function remove_rach5_support( $feature ) {
+	global $rach5_theme_features;
+
+	if ( in_array( $feature, $rach5_theme_features ) ) {
+		unset( $rach5_theme_features[$feature] );
+		return true;
+	}
+
+	if ( ! isset( $rach5_theme_features[$feature] ) ) {
+		return false;
+	}
+}
+
+
+/**
+ * function do_rach5_support
+ * Set up Rach5 support
+ * @since 0.3
+ */
+
+function do_rach5_support() {
+	global $rach5_theme_features;
+
+	if ( array_key_exists('htaccess', $rach5_theme_features) ) {
+		require_once( RACH5_HELPER_PATH . 'functions/htaccess.php');
+	}
+
+	if ( array_key_exists('root-relative-urls', $rach5_theme_features) ) {
+		require_once( RACH5_HELPER_PATH . 'functions/root-relative-urls.php');
+	}
+
+	if ( array_key_exists('wrappers', $rach5_theme_features) ) {
+		require_once( RACH5_HELPER_PATH . 'functions/wrappers.php');
+	}
+}
+add_action('init', 'do_rach5_support');
+
+
+/*
  *
  * Plugin Updater
  *
  */
 
-require_once( RACH5_HELPER_PATH . 'updater.php');
+// require_once( RACH5_HELPER_PATH . 'updater.php');
