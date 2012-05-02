@@ -1,15 +1,20 @@
 <?php
 
-// ------------------------------------------------------------ //
-//
-//    Rach5
-//    http://www.vanpattenmedia.com/projects/rach5/
-//
-//    Functions: .htaccess rewrites    
-//
-// ------------------------------------------------------------ //
+/**
+ * Rach5 Helper
+ * .htaccess rewrites
+ *
+ * @version 0.3
+ * @package rach5-helper
+ */
 
-// Verify writable .htaccess file
+
+/**
+ * function rach5_htaccess_writable
+ * Display error message if we can't write to .htaccess
+ * @since 0.1
+ */
+
 function rach5_htaccess_writable() {
 	if (!is_writable(get_home_path() . '.htaccess')) {
 		if (current_user_can('administrator')) {
@@ -19,7 +24,13 @@ function rach5_htaccess_writable() {
 }
 add_action('admin_init', 'rach5_htaccess_writable');
 
-// Ditch /wp-content/themes/themename/ and /wp-content/plugins/
+
+/**
+ * function rach5_add_rewrites
+ * Ditch /wp-content/themes/themename/ and /wp-content/plugins/
+ * @since 0.1
+ */
+
 function rach5_add_rewrites($content) {
 	global $wp_rewrite;
 	$rach5_new_non_wp_rules = array(
@@ -31,6 +42,13 @@ function rach5_add_rewrites($content) {
 	$wp_rewrite->non_wp_rules = $rach5_new_non_wp_rules;
 	return $content;
 }
+
+
+/**
+ * function rach5_clean_urls
+ * Clean up URLs
+ * @since 0.1
+ */
 
 function rach5_clean_urls($content) {
 	if (strpos($content, FULL_RELATIVE_PLUGIN_PATH) === 0) {
