@@ -144,4 +144,4 @@ add_action('init', 'do_rach5_support');
  *
  */
 
-// require_once( RACH5_HELPER_PATH . 'updater.php');
+// require_once( RACH5_HELPER_PATH . 'vpm-plugin-updater/vpm-plugin-updater.php');

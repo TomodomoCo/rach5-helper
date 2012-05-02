@@ -1,0 +1,3 @@
+[submodule "vpm-plugin-updater"]
+	path = vpm-plugin-updater
+	url = git://github.com/vanpattenmedia/vpm-plugin-updater.git
