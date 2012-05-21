@@ -4,14 +4,14 @@ Plugin Name: Rach5 Helper
 Plugin URI: http://www.vanpattenmedia.com/
 Description: Helper functions for Rach5 themes
 Author: Van Patten Media
-Version: 0.4
+Version: 0.5
 Author URI: http://www.vanpattenmedia.com/
 */
 
 /**
  * Rach5 Helper
  *
- * @version 0.4
+ * @version 0.5
  * @package rach5-helper
  */
 
@@ -145,7 +145,7 @@ add_action('init', 'do_rach5_support');
  */
 
 // Pull in the updater
-include_once( VPM_ADMIN_PATH . 'vpm-plugin-updater/vpm-plugin-updater.php' );
+include_once( RACH5_HELPER_PATH . 'vpm-plugin-updater/vpm-plugin-updater.php' );
 
 // Set up and run the updater
 $rach5_helper_updater = new vpm_plugin_updater('https://updates.vanpattenmedia.com/', basename(dirname(__FILE__)) );
