@@ -4,7 +4,7 @@
  * Rach5 Helper
  * .htaccess rewrites
  *
- * @version 0.3
+ * @version 0.4
  * @package rach5-helper
  */
 
@@ -37,6 +37,7 @@ function rach5_add_rewrites($content) {
 		'css/(.*)'      => THEME_PATH . '/css/$1',
 		'js/(.*)'       => THEME_PATH . '/js/$1',
 		'img/(.*)'      => THEME_PATH . '/img/$1',
+		'fonts/(.*)'    => THEME_PATH . '/fonts/$1',
 		'plugins/(.*)'  => RELATIVE_PLUGIN_PATH . '/$1'
 	);
 	$wp_rewrite->non_wp_rules = $rach5_new_non_wp_rules;
