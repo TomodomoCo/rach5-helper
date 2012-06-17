@@ -136,17 +136,3 @@ function do_rach5_support() {
 	}
 }
 add_action('init', 'do_rach5_support');
-
-
-/*
- *
- * Plugin Updater
- *
- */
-
-// Pull in the updater
-include_once( RACH5_HELPER_PATH . 'vpm-plugin-updater/vpm-plugin-updater.php' );
-
-// Set up and run the updater
-$rach5_helper_updater = new vpm_plugin_updater('https://updates.vanpattenmedia.com/', basename(dirname(__FILE__)) );
-$rach5_helper_updater->vpm_plugin_updater_do_update();
