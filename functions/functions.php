@@ -99,7 +99,7 @@ function tab($count=1){
  */
 
 function new_excerpt_more($more) {
-	return '... <a href="'. get_permalink($post->ID) . '" class="excerpt-read-more-link" id="read-more-' . $post->ID . '">Read more...</a>';
+	return '...';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
