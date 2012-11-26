@@ -5,11 +5,6 @@ The **Rach5 Helper** is a WordPress plugin that provides necessary functions for
 
 You can install the theme and plugin in any order, however the theme will break on the front-end until you have the helper installed. A helpful notification in the admin panel will guide you to the zip upload page, so you can upload the <a href="https://github.com/vanpattenmedia/rach5-helper/zipball/master">most recent zip file</a>.
 
-#### Updates
-Updates are handled via a custom update API. Your WordPress installation will communicate with our update server via HTTPS. We do not save or harvest any information, but your installation does send your current WordPress version so we can programatically check compatibility with the latest version of rach5-helper. It is never recorded or seen by human eyes.
-
-The custom update API is, to the best of our knowledge, fully compatible with remote WordPress update services as well, making bulk-administration easier and more effective. Still, always come here to see what we've changed before updating!
-
 ### What is Rach5?
 **Rach5** (that's pronounced _Rock_ as in _Rach_-maninov) is a WordPress theme boilerplate developed by Chris Van Patten for Van Patten Media.
 
