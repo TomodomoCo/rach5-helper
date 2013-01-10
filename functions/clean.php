@@ -92,8 +92,6 @@ function rach5_head_cleanup() {
 	remove_action('wp_head', 'start_post_rel_link', 10, 0);
 	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 	remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
-	remove_action('wp_head', 'noindex', 1);
-	// remove_action('wp_head', 'feed_links', 2);
 
 	remove_action('wp_head', 'rel_canonical');
 	add_action('wp_head', 'rach5_rel_canonical');
