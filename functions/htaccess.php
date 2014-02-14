@@ -10,22 +10,6 @@
 
 
 /**
- * function rach5_htaccess_writable
- * Display error message if we can't write to .htaccess
- * @since 0.1
- */
-
-function rach5_htaccess_writable() {
-	if (!is_writable(get_home_path() . '.htaccess')) {
-		if (current_user_can('administrator')) {
-			add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('Please make sure your <a href="%s">.htaccess</a> file is writable. ', 'rach5'), admin_url('options-permalink.php')) . "</p></div>';"));
-		}
-	}
-}
-add_action('admin_init', 'rach5_htaccess_writable');
-
-
-/**
  * function rach5_add_rewrites
  * Ditch /wp-content/themes/themename/ and /wp-content/plugins/
  * @since 0.1
