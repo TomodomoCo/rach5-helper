@@ -132,3 +132,45 @@ function rach5_get_the_excerpt() {
 
 	return $rach5_excerpt;
 }
+
+
+/**
+ * rach5_options
+ * Get the ID of the options page
+ * @since 0.4
+ */
+
+function rach5_options() {
+	$options = get_page_by_path('options');
+	return $options->ID;
+}
+
+
+/**
+ * rach5_image
+ * Get the URL of an image from its ID
+ * @since 0.4
+ */
+
+function rach5_image( $id, $size = 'full' ) {
+	$image = wp_get_attachment_image_src( $id, $size );
+	return $image[0];
+}
+
+
+/**
+ * rach5_is_child_of
+ * Conditional function to detect if a page is a sub-page
+ * @since 0.4
+ */
+
+function rach5_is_child_of( $slug ) {
+	$child = get_page_by_path( $slug );
+
+	global $post;
+	if ( $post->post_parent == $child->ID ) {
+		return true;
+	} else {
+		return false;
+	}
+}
