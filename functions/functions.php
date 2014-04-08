@@ -4,7 +4,7 @@
  * Rach5 Helper
  * Master functions
  *
- * @version 0.3
+ * @version 0.4
  * @package rach5-helper
  */
 
