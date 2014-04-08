@@ -4,7 +4,7 @@
  * Rach5 Helper
  * Master functions
  *
- * @version 0.4
+ * @version 0.7
  * @package rach5-helper
  */
 
@@ -110,7 +110,7 @@ add_filter('excerpt_more', 'new_excerpt_more');
  * @since 0.1
  */
 
-function rach5_get_the_excerpt() {
+function rach5_get_the_excerpt( $count = 20 ) {
 	global $posts;
 
 	if ( empty($posts[0]->post_excerpt) ) {
@@ -119,9 +119,9 @@ function rach5_get_the_excerpt() {
 
 		// 2. Strip tags from $content
 		$stripped_content = strip_tags($content);
-
-		// 3. Trim words from $content
-		$trimmed_content = wp_trim_words($stripped_content, 20);
+		
+		// 3. Trim words from $content, at the set count length
+		$trimmed_content = wp_trim_words($stripped_content, $count);
 
 		// 4. Here's your excerpt!
 		$rach5_excerpt = str_replace("\n", ' ', $trimmed_content);
@@ -137,7 +137,7 @@ function rach5_get_the_excerpt() {
 /**
  * rach5_options
  * Get the ID of the options page
- * @since 0.4
+ * @since 0.7
  */
 
 function rach5_options() {
@@ -149,7 +149,7 @@ function rach5_options() {
 /**
  * rach5_image
  * Get the URL of an image from its ID
- * @since 0.4
+ * @since 0.7
  */
 
 function rach5_image( $id, $size = 'full' ) {
@@ -161,7 +161,7 @@ function rach5_image( $id, $size = 'full' ) {
 /**
  * rach5_is_child_of
  * Conditional function to detect if a page is a sub-page
- * @since 0.4
+ * @since 0.7
  */
 
 function rach5_is_child_of( $slug ) {
