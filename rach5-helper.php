@@ -4,14 +4,14 @@ Plugin Name: Rach5 Helper
 Plugin URI: http://www.vanpattenmedia.com/
 Description: Helper functions for Rach5 themes
 Author: Van Patten Media
-Version: 0.6
+Version: 0.7
 Author URI: http://www.vanpattenmedia.com/
 */
 
 /**
  * Rach5 Helper
  *
- * @version 0.6
+ * @version 0.7
  * @package rach5-helper
  */
 
