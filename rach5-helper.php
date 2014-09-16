@@ -44,11 +44,15 @@ function wp_base_dir() {
  * @since 0.1
  */
 function rach5_info() {
-	if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
+	if ( !defined('__DIR__') )
+		define('__DIR__', dirname(__FILE__));
+
+	$exploded   = explode( '/themes/', get_template_directory() );
+	$theme_name = next( $exploded );
 
 	// Get some info about the site
 	define('WP_BASE', wp_base_dir());
-	define('THEME_NAME', next(explode('/themes/', get_template_directory())));
+	define('THEME_NAME', $theme_name);
 	define('RELATIVE_PLUGIN_PATH', str_replace(site_url() . '/', '', plugins_url()));
 	define('FULL_RELATIVE_PLUGIN_PATH', WP_BASE . '/' . RELATIVE_PLUGIN_PATH);
 	define('RELATIVE_CONTENT_PATH', str_replace(site_url() . '/', '', content_url()));
